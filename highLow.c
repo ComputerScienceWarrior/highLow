@@ -31,7 +31,6 @@ int highLow(char *player1, char *player2, int random, int counter) {
 		return 0;
 	}
 
-	printf("The random is: %d.\n", random);
 	printf("Guess the number between 0 and 99.\n");
 	scanf_s("%d", &guess);
 	
@@ -41,12 +40,12 @@ int highLow(char *player1, char *player2, int random, int counter) {
 		}
 		if (guess < random) {
 			counter++;
-			printf("Sorry, that guess is too low. Try a higher guess. That was %d / 7 attempts.\n", counter);
+			printf("Sorry, that guess is too low. Try a higher guess. That was %d/7 attempts.\n", counter);
 			highLow(player1, player2, random, counter);
 		}
 		else if (guess > random) {
 			counter++;
-			printf("Sorry, that guess is too high. Try a lower guess. That was %d / 7 attempts.\n", counter);
+			printf("Sorry, that guess is too high. Try a lower guess. That was %d/7 attempts.\n", counter);
 			highLow(player1, player2, random, counter);
 		}
 
