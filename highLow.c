@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int highLow(char *player1, char *player2, int random, int counter);
 
@@ -25,30 +26,29 @@ int main() {
 int highLow(char *player1, char *player2, int random, int counter) {
 	int guess;
 
+	if (counter == 7) {
+		printf("Sorry, you've reached the maximum number of attempts. Try again next time!");
+		return 0;
+	}
+
 	printf("The random is: %d.\n", random);
 	printf("Guess the number between 0 and 99.\n");
 	scanf_s("%d", &guess);
-
-	if (counter != 6) {
+	
 		if (guess == random) {
 			printf("You win, %s! Way to go!!!\n", player1);
 			return 0;
 		}
 		if (guess < random) {
-			printf("Sorry, that guess is too low. Try a higher guess.\n");
 			counter++;
+			printf("Sorry, that guess is too low. Try a higher guess. That was %d / 7 attempts.\n", counter);
 			highLow(player1, player2, random, counter);
 		}
 		else if (guess > random) {
-			printf("Sorry, that guess is too high. Try a lower guess.\n");
 			counter++;
+			printf("Sorry, that guess is too high. Try a lower guess. That was %d / 7 attempts.\n", counter);
 			highLow(player1, player2, random, counter);
 		}
-	}
-	else {
-		printf("Awww, game over %s! You hit the maximum of %d attempts.", player1, counter + 1);
 
-		return 0;
-	}
-
+	return 0;
 }
